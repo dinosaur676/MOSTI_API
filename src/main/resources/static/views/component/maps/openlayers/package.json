@@ -1,0 +1,16 @@
+{
+  "name": "OpenLayers",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node_modules/.bin/vite",
+    "build": "node_modules/.bin/vite build",
+    "serve": "node_modules/.bin/vite preview",
+    "watch": "node_modules/.bin/vite build --watch"
+  },
+  "devDependencies": {
+    "vite": "^4.0.4"
+  },
+  "dependencies": {
+    "ol": "latest"
+  }
+}

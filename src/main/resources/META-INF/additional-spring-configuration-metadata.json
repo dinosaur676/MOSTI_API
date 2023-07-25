@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "app.authorized-redirect-path",
+      "type": "java.lang.String",
+      "description": "oauth2.0 인증 후 리디렉트 될 path"
+    }
+  ] }

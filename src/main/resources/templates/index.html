@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+			xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<title>Demo</title>
+	<meta name="description" content=""/>
+	<meta name="viewport" content="width=device-width"/>
+	<base href="/"/>
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/webjars/js-cookie/js.cookie.js"></script>
+	<!-- default header name is X-CSRF-TOKEN -->
+	<meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+	<meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
+</head>
+<body>
+<h1>Demo</h1>
+<div>
+	With Google: <a href="/oauth2/authorization/google">click here</a>
+</div>
+<div class="container authenticated" style="display:none">
+	Logged in as: <span id="user"></span>
+	<div>
+		<button onClick="logout()" class="btn btn-primary">Logout</button>
+	</div>
+</div>
+<div class="container text-danger error"></div>
+<script type="text/javascript">
+	$.ajaxSetup({
+		beforeSend: function(xhr) {
+			xhr.setRequestHeader($("meta[name='_csrf_header']").attr("content"), $("meta[name='_csrf']").attr("content"));
+		}
+	});
+	$.get("/user", function(data) {
+		$("#user").html(data.name);
+		$(".unauthenticated").hide()
+		$(".authenticated").show()
+	});
+	$.get("/error", function(data) {
+		if (data) {
+			$(".error").html(data);
+		} else {
+			$(".error").html('');
+		}
+	});
+
+	var logout = function() {
+		$.post("/logout", function() {
+			$("#user").html('');
+			$(".unauthenticated").show();
+			$(".authenticated").hide();
+		})
+		return true;
+	}
+</script>
+</body>
+</html>
