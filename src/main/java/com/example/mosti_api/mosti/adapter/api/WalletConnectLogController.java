@@ -6,7 +6,7 @@ import com.example.mosti_api.framework.dto.SuccessRespDto;
 import com.example.mosti_api.mosti.application.domain.WalletConnectLog;
 import com.example.mosti_api.mosti.application.dto.request.wallet.WalletConnectLogReqDto;
 import com.example.mosti_api.mosti.application.dto.response.wallet.WalletConnectLogRespDto;
-import com.example.mosti_api.mosti.application.port.out.IWalletConnectLogService;
+import com.example.mosti_api.mosti.application.port.in.IWalletConnectLogService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,7 +21,7 @@ public class WalletConnectLogController {
     }
 
     @PostMapping
-    public ResponseDto createLogInfo(@RequestBody WalletConnectLogReqDto dto) {
+    public ResponseDto select(@RequestBody WalletConnectLogReqDto dto) {
 
         List<WalletConnectLogRespDto> respDtoList = walletConnectLogService.select(dto.publicKey());
 

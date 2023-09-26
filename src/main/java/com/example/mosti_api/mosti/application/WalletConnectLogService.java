@@ -1,10 +1,9 @@
 package com.example.mosti_api.mosti.application;
 
 import com.example.mosti_api.mosti.application.domain.WalletConnectLog;
-import com.example.mosti_api.mosti.application.dto.request.wallet.WalletConnectLogReqDto;
 import com.example.mosti_api.mosti.application.dto.response.wallet.WalletConnectLogRespDto;
-import com.example.mosti_api.mosti.application.port.in.IWalletConnectLogRepository;
-import com.example.mosti_api.mosti.application.port.out.IWalletConnectLogService;
+import com.example.mosti_api.mosti.application.port.out.IWalletConnectLogRepository;
+import com.example.mosti_api.mosti.application.port.in.IWalletConnectLogService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
